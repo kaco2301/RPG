@@ -28,6 +28,7 @@ public class ResourceManager
             Debug.Log($"Failed to load prefab : {path}");
             return null;
         }
+
         //2.풀링된 애가 있는지 체크
         if (original.GetComponent<Poolable>() != null)
             return Managers.Pool.Pop(original, parent).gameObject;

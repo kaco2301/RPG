@@ -11,16 +11,14 @@ public class CameraController : MonoBehaviour
     [SerializeField] 
     GameObject _player = null;
 
-    void Start()
-    {
-        
-    }
-
-
     void LateUpdate()
     {
         if (_mode == Define.CameraMode.QuaterView)
         {
+            if(_player == null)
+            {
+                return;
+            }
             RaycastHit hit;
             if(Physics.Raycast(_player.transform.position, _delta, out hit, _delta.magnitude, LayerMask.GetMask("Wall"))) 
             {
